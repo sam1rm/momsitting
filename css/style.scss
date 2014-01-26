@@ -2,14 +2,11 @@ $gray: #4a4b4c;
 $blue: #00bee9;
 $blue_dark: #00a7cc;
 $blue_trans: rgba(0, 190, 233, 0.3);
+$red: #F83C34;
 
 * { 
   margin: 0; 
   padding: 0; 
-}
-
-body {
-  background: #f9f9f9;
 }
 
 html,
@@ -71,11 +68,18 @@ h2 {
   background: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   padding-top: 20px;
-  overflow: hidden;
   z-index: 2;
 
   ul {
+    overflow: hidden;
     padding: 0 20px;
+  }
+
+  .menu-trigger {
+    display: none;
+    background: url("../img/menu.png");
+    width: 30px;
+    height: 30px;
   }
 
   .general-nav-item {
@@ -146,11 +150,11 @@ h2 {
   a {
     background: rgba(255, 255, 255, 0.2);
     &:first-child {
-      border-right: 1px solid white;
       padding-right: 24px;
     }
     &:last-child {
       padding-right: none;
+      border-left: 1px solid white;
     }
     color: white;
     text-decoration: none;
@@ -208,20 +212,20 @@ strong {
 
 .module-background {
   background: rgba(0, 0, 0, 0.2);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 5;
 }
 
 .module-unit {
   z-index: 10;
   background: white;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  max-width: 700px;
-  padding: 30px;
+  max-width: 92%;
+  padding: 30px 2%;
   margin: 0 auto;
   border-radius: 15px;
   margin-top: 100px;
@@ -274,6 +278,7 @@ strong {
 
 .page-content {
   width: 980px;
+  max-width: 96%;
   margin: 20px auto;
   padding: 20px;
   background: white;
@@ -286,6 +291,8 @@ strong {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 21px;
+  line-height: 25px;
+  margin-bottom: 10px;
   .blue {
     color: $blue;
     font-weight: 400;
@@ -323,10 +330,13 @@ strong {
   height: 500px;
 }
 
+.map {
+  width: 81%;
+}
+
 .filters {
   width: 16.333%;
   margin-right: 2%;
-  border-right: 1px solid $blue;
   h2 {
     font-weight: 400;
     text-align: center;
@@ -336,13 +346,40 @@ strong {
     margin: 25px 0 10px 0;
     display: block;
   }
-  input[type=radio] {
+  input[type="range"] {
+    width: 100%;
+  }
+  input[type="checkbox"] {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    margin-bottom: 8px;
   }
 }
 
-.map {
-  width: 80.666%;
+// Search Results
+.search-results {
+  float: left;
+  width: 78%;
+  .result {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    min-width: 60%;
+    .result-heading {
+      font-weight: 400;
+      line-height: 17px;
+      font-size: 20px;
+    }
+    .result-subheading,
+    .salary,
+    .view-profile {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+    }
+    .view-profile {
+      color: $blue;
+    }
+  }
 }
 
 // Profile
@@ -501,7 +538,7 @@ strong {
     margin-right: 15px;
   }
   label {
-    width: 300px;
+    width: 30%;
     text-align: right;
     font-size: 18px;
     line-height: 28px;
@@ -510,6 +547,14 @@ strong {
     display: block;
     overflow: hidden;
     margin-bottom: 10px;
+  }
+  input {
+    &:focus {
+      border: 1px solid $blue;
+    }
+    &.error {
+      border: 1px solid $red;
+    }
   }
   .text-input-small,
   .text-input-large,
@@ -612,4 +657,205 @@ strong {
     }
   }
 }
+
+@media screen and (max-width: 938px) {
+  .general-nav {
+    .general-nav-item {
+      padding: 10px 30px;
+      a {
+        font-size: 15px;
+      }
+    }
+  }
+  .page-content,
+  .hero-unit {
+    width: 92%;
+    padding: 4%;
+    box-shadow: none;
+  }
+  .filters h6 {
+    font-size: 15px;
+  }
+  .filters label {
+    font-size: 12px;
+  }
+  .testimonials {
+    border-top: 1px solid #ddd;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .profile-unit .location,
+  .profile-unit h1 {
+    display: block;
+    float: none;
+    text-align: left;
+  }
+  .filters,
+  .map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .map {
+    margin-top: 15px;
+    height: 500px;
+  }
+  .general-nav {
+    box-shadow: none;
+    .logo {
+      width: 96%;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+      padding: 10px 2%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      height: 30px;
+      a {
+        float: left;
+      }
+      .menu-trigger {
+        display: block;
+        float: right;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+    &.active {
+      .general-nav-item {
+        display: block;
+      }
+    }
+    .general-nav-item {  
+      &:last-child {
+        border-bottom: 1px solid #ddd;
+      }
+      display: block;
+      float: none;
+      padding: 10px 32px 10px 0;
+      overflow: hidden;
+      display: none;
+      &.first{
+        margin-top: 40px;
+      }
+      a {
+        font-size: 18px;
+        float: right;
+      }
+      &.active,
+      &.active:hover {
+        border: none;
+        border-right: 22px solid $blue;
+        padding-right: 10px; 
+        &:hover {
+          cursor: default;
+        }
+      }
+      &:hover {
+        border: none;
+        border-right: 22px solid $blue_trans;
+        padding-right: 10px;
+      }
+    }
+    margin-bottom: 30px;
+  }
+  .page-content,
+  .hero-unit {
+    width: 92%;
+    padding: 4%;   
+  }
+
+  .hero-unit {
+    background: $blue;
+    .hero-contents {
+      width: 100%;
+      padding: 0;
+    }
+    .hero-text,
+    .hero-image {
+      display: block;
+      margin: 0;
+      width: 100%;
+    }
+    .hero-image {
+      margin: 15px auto;
+    }
+    .hero-text {
+      h1 {
+        line-height: 37px;
+      }
+      h2 {
+        line-height: 28px;
+      }
+    }
+    .button-group {
+      margin-top: 15px;
+      width: 96%;
+      a {
+        width: 48.5%;
+        padding: 10px 0;
+        background: none;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 618px) {
+  .basic-form {
+    .text-input-small,
+    .text-input-large,
+    .number-input,
+    .date-input,
+    .textarea-input,
+    .number-select-input,
+    .select-input {
+      padding: 1%;
+      margin-right: 1%;
+      max-width: 60%;
+    }
+
+    .text-input-large {
+      width: 60%;
+      margin-right: 0;
+    }
+    .text-input-small {
+      width: 28%;
+    }
+  }
+}
+
+.ui-corner-all {
+  height: 10px;
+}
+
+.ui-slider-range.ui-widget-header.ui-corner-all {
+  background: $blue;
+}
+
+.ui-slider-handle.ui-state-default.ui-corner-all {
+  height: 20px;
+  width: 20px;
+  background: white;
+  &:focus {
+    border: 1px solid $blue;
+    outline: none;
+  }
+}
+
+.slider-text {
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
 
