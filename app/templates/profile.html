@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+    <title>MomSitting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Elizabeth Lin">
+
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="scripts/momsitting.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="main">
+        <nav class="general-nav">
+          <ul>
+            <li class="logo">
+              <a href="/">Momsitting</a>
+              <a href="javascript:void(0)" class="menu-trigger"></a>
+            </li>
+            <li class="active general-nav-item first"><a href="/settings" id="account">Account</a></li>
+            <li class="general-nav-item"><a href="blog.html">Blog</a></li>
+            <li class="general-nav-item"><a href="/search">Search</a></li>
+            <li class="general-nav-item"><a href="#">How it works</a></li>
+          </ul>
+        </nav>
+
+        <div class="page-content profile-unit">
+          <div class="back-to-map">
+            <a href="search.html">Back to map</a>
+          </div>
+          <header>
+            <h1>Karina's Profile</h1>
+            <div class="location">
+              <h3><strong>City:</strong> Arlington</h3>
+              <h3><strong>Zip:</strong> 22101</h3>
+            </div>
+          </header>
+          <div class="profile-card">
+            <div class="profile-card-header">
+              <div class="profile-image"></div>
+              <div class="profile-info">
+                <h4><strong>Weekly Rate:</strong> $150</h4>
+                <h5><strong>Years of Experience:</strong> 5</h5>
+                <h5><strong>Preferred Ages:</strong> 5, 7, 10</h5>
+                <h5><strong>Languages:</strong> English, Chinese</h5>
+                <button class="action-btn" id="contact-now">Contact Now</button>
+              </div>
+            </div>
+            <div class="profile-intro">
+              <h3>Introduction</h3>
+              <p>Hi, my name is Karina and I will take care of your kids like I will take care of my own.</p>
+ 
+              <p>I start my days from 9am and end from 5pm. Your child must be picked up by the end of the day. I will cook breakfast only and require that you pack lunch for your child.</p>
+             
+            </div>
+            <div class="attributes">
+              <h3>Attributes</h3>
+              <fieldset>
+                <input id="licensed" type="checkbox" name="other" value="licensed"></input>
+                <label for="licensed">Licensed</label>
+              </fieldset>
+              <fieldset>
+                <input id="cpr" type="checkbox" name="Other" value="cpr" checked></input>
+                <label for="cpr">Private</label>
+              </fieldset>
+              <fieldset>
+                <input id="licensed" type="checkbox" name="other" value="licensed"></input>
+                <label for="licensed">Background Check/label>
+              </fieldset>
+              <fieldset>
+                <input id="cpr" type="checkbox" name="Other" value="cpr"></input>
+                <label for="cpr">CPR Certified</label>
+              </fieldset>
+              <fieldset>
+                <input id="licensed" type="checkbox" name="other" value="licensed" checked></input>
+                <label for="licensed">Part Time</label>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-background">
+      <div class="module-unit contact">
+        <h1>Contact Karina</h1>
+        <form class="basic-form contact-form">
+          <fieldset>
+            <label>Name</label>
+            <input type="text" class="text-input-small" name="first-name">
+            <input type="text" class="text-input-small" name-"last-name">
+          </fieldset>
+
+          <fieldset>
+            <label>Email</label>
+            <input type="email" class="text-input-large" name="email">
+          </fieldset>
+
+          <fieldset>
+            <label>Address</label>
+            <input type="text" class="text-input-large" name="address">
+          </fieldset>
+
+          <fieldset>
+            <label>Children Age(s)</label>
+            <input type="text" class="number-input"><label class="number-label">0-2yr</label>
+            <input type="text" class="number-input"><label class="number-label">3-5yr</label>
+            <input type="text" class="number-input"><label class="number-label">6-8yr</label>
+            <input type="text" class="number-input"><label class="number-label">9-11yr</label>
+            <input type="text" class="number-input"><label class="number-label">12+</label>
+          </fieldset>
+
+          <fieldset>
+            <label>Start Date</label>
+            <input type="date" class="date-input">
+          </fieldset>
+
+          <fieldset>
+            <label class="invisible-label">Background</label>
+            <input type="textarea" class="textarea-input" placeholder="Tell Karina a little about yourself"></input>
+          </fieldset>
+
+          <input type="submit" value="Contact Karina (for Free)" class="action-btn"></input>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p><a href="#">Terms of Use</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+  </body>
+</html>
