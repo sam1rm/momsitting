@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+    <title>MomSitting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Elizabeth Lin">
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="scripts/momsitting.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL9XtyxxQSjUzHFeeAlYx13ts7uwA7QBg&sensor=true">
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="main">
+        <nav class="general-nav">
+          <ul>
+            <li class="logo">
+              <a href="javascript:void(0)">Momsitting</a>
+              <a href="javascript:void(0)" class="menu-trigger"></a>
+            </li>
+            <li class="general-nav-item first"><a href="javascript:void(0)" id="login">Login</a></li>
+            <li class="general-nav-item"><a href="blog.html">Blog</a></li>
+            <li class="active general-nav-item"><a href="javascript:void(0)">Search</a></li>
+            <li class="general-nav-item"><a href="index.html">How it works</a></li>
+          </ul>
+        </nav>
+
+        <div class="page-content mom-search">
+          <header>
+            <h1 class="page-content-heading"><span class="blue">5 MomSitters</span> found near you!</h1>
+            <form class="search-form">
+              <input type="search" placeholder="Your Street Address" class="search-input"></input>
+              <select>
+                <option value="2001">2001</option>
+                <option value="2003">2003</option>
+                <option value="2003">2005</option>
+              </select>
+            </search>
+          </header>
+          <div class="filters">
+            <h2>Filters</h2>
+            <form class="basic-form">
+              <h6>Price</h6>
+              <p class="slider-text">
+                <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+              </p>
+              <div id="slider-range"></div>
+              <h6>Your Child's Age</h6>
+              <fieldset>
+                <input id="0-5"type="checkbox" name="age" value="0-5" class="checkbox"></input>
+                <label for="0-5">0-5 years</label>
+              </fieldset>
+              <fieldset>
+                <input id="6-10" type="checkbox" name="age" value="6-10" class="checkbox"></input>
+                <label for="6-10">6-10 years</label>
+              </fieldset>
+              <fieldset>
+                <input id="10" type="checkbox" name="age" value="10" class="checkbox"></input>
+                <label for="10+">10+ years</label>
+              </fieldset>
+              <h6>Other Attributes</h6>
+              <fieldset>
+                <input id="licensed" type="checkbox" name="other" value="licensed" class="checkbox"></input>
+                <label for="licensed">Licensed</label>
+              </fieldset>
+              <fieldset>
+                <input id="cpr" type="checkbox" name="Other" value="cpr" class="checkbox"></input>
+                <label for="cpr">CPR Certified</label>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="search-results">
+            <ul class="results">
+              <li class="result">
+                <h1 class="result-heading">Karina</h1>
+                <h2 class="result-subheading">5 years of experience</h2>
+                <h3 class="salary"><span class="money">$125</span> a week</h3>
+                <a href="#" class="view-profile">View Profile</a>
+              </li>
+
+              <li class="result">
+                <h1 class="result-heading">Karina</h1>
+                <h2 class="result-subheading">5 years of experience</h2>
+                <h3 class="salary"><span class="money">$125</span> a week</h3>
+                <a href="#" class="view-profile">View Profile</a>
+              </li>
+
+              <li class="result">
+                <h1 class="result-heading">Karina</h1>
+                <h2 class="result-subheading">5 years of experience</h2>
+                <h3 class="salary"><span class="money">$125</span> a week</h3>
+                <a href="#" class="view-profile">View Profile</a>
+              </li>
+
+              <li class="result">
+                <h1 class="result-heading">Karina</h1>
+                <h2 class="result-subheading">5 years of experience</h2>
+                <h3 class="salary"><span class="money">$125</span> a week</h3>
+                <a href="#" class="view-profile">View Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-background">
+      <div class="module-unit login">
+        <h1>Login</h1>
+        <label>Email</label>
+        <input type="text"></input>
+        <label>Password</label>
+        <input type="password"></input>
+        <input type="submit" value="Login" class="submit-btn"></input>
+        <input type="submit" value="Sign Up" class="submit-btn last"></input>
+      </div>
+    </div>
+    
+    <footer>
+      <p><a href="#">Terms of Use</a> | <a href="#">Contact Us</a></p>
+    </footer>
+  </body>
+</html>
