@@ -124,7 +124,8 @@ h2 {
       padding-right: none;
       border-left: 1px solid white; }
     .button-group a:hover {
-      background: rgba(255, 255, 255, 0.3); }
+      background: white;
+      color: #00bee9; }
 
 .testimonials {
   width: 910px;
