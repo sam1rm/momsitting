@@ -1,6 +1,6 @@
 @font-face {
     font-family: LittleDays;
-    src: url("http://0.0.0.0:5000/static/fonts/littledays.ttf");
+    src: url("/static/fonts/littledays.ttf");
 }
 
 body, html {
@@ -13,7 +13,7 @@ h1,h2,h3,h4,h5,h6 {
 
 #main-home {
     height:94%;
-    background-image: url('http://0.0.0.0:5000/static/img/mom.jpg');
+    background-image: url('/static/img/mom.jpg');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
