@@ -1,0 +1,120 @@
+@font-face {
+    font-family: LittleDays;
+    src: url("http://0.0.0.0:5000/static/fonts/littledays.ttf");
+}
+
+body, html {
+    height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+#main-home {
+    height:94%;
+    background-image: url('http://0.0.0.0:5000/static/img/mom.jpg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size:cover;
+}
+
+#how-it-works-nav {
+    height:6%;
+    background-color: #ff7bac;
+}
+
+#how-it-works-nav {
+    color:white;
+    text-align:center;
+    padding-top:6px;
+
+}
+
+#how-it-works-text {
+    font-size:20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#how-it-works {
+    height:100%;
+}
+
+#main-logo {
+    height:15%;
+    font-size:50px;
+    font-family: 'LittleDays';
+    position:relative;
+    font-weight:bold;
+    color:black;
+    margin-top:30px;
+    margin-left:25px;
+    z-index:2;
+}
+#white-box {
+    height:94%;
+    background-color:white;
+    opacity:0.60;
+    position:absolute;
+    z-index:1;
+    
+}
+
+#intro-text {
+    position:relative;
+    z-index:2;
+    color:grey;
+    margin-left:25px;
+    margin-right:25px;
+    line-height:125%;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+#enter-zip {
+    margin-left:25px;
+    position:relative;
+    z-index:2;
+}
+
+#zip-text{
+    font-size:16px;
+    font-family: 'Raleway', sans-serif;
+    color:grey;
+    font-weight:700;
+}
+
+.btn.btn-default.zip-dropdown, .btn.btn-default.search-btn {
+    border-radius:0px;
+    border-color: #ff7bac;
+}
+
+.btn.search-btn{
+    color:white;
+    background-color: #ff7bac;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.navbar.navbar-default {
+    background-color:transparent;
+    border-color:transparent;
+    font-family: 'Raleway', sans-serif;
+    color:grey;
+    font-weight:500;
+    font-size:20px;
+}
+
+.navbar.navbar-default .container-fluid {
+    margin-right:20px;
+    margin-top:20px;
+}
+
+#signup-nav {
+    border: 1px solid #ff7bac;
+}
