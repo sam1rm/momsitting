@@ -21,15 +21,22 @@ h1,h2,h3,h4,h5,h6 {
     background-size:cover;
 }
 
-#how-it-works-nav {
+#terms-and-contact-nav {
     height:6%;
-    background-color: #ff7bac;
+    background-color: #ff7bac;   
+    color:white;
+    text-align:center;
+    padding-top:0.75%;
+    font-size:14px;
+    font-family: 'Raleway', sans-serif;
 }
 
 #how-it-works-nav {
     color:white;
     text-align:center;
     padding-top:6px;
+    height:6%;
+    background-color: #ff7bac;
 
 }
 
@@ -39,7 +46,20 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #how-it-works {
-    height:100%;
+    height:88%;
+    text-align:center;
+    font-family: 'Raleway', sans-serif;
+    color:grey;
+}
+
+#testimonial-quote {
+    font-family: 'LittleDays';
+    color:#ff7bac;
+    font-size:24px;
+}
+
+#testimonial-quote-div {
+    margin-top:7%;
 }
 
 #main-logo {
@@ -89,7 +109,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight:700;
 }
 
-.btn.btn-default.zip-dropdown, .btn.btn-default.search-btn {
+.btn.btn-default.zip-dropdown, .btn.btn-default.search-btn, .btn.btn-default.try-btn {
     border-radius:0px;
     border-color: #ff7bac;
 }
@@ -99,6 +119,13 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #ff7bac;
     padding-left:20px;
     padding-right:20px;
+}
+
+.btn.try-btn {
+    color:white;
+    background-color: #ff7bac;
+    width:100%;
+    font-size:24px;
 }
 
 .navbar.navbar-default {
@@ -117,4 +144,17 @@ h1,h2,h3,h4,h5,h6 {
 
 #signup-nav {
     border: 1px solid #ff7bac;
+}
+
+#how-it-works-icon-1, #how-it-works-icon-2 {
+    font-size:24px;
+    color:grey;
+}
+
+#how-it-works-options {
+    margin-top:7%;
+}
+
+#try-it-now-div {
+    margin-top:5%;
 }
