@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $('#try-it-now-button').click(function() {
+    $('#signupModal').modal();
+  });
   $('#login, #contact-now').click(function(){
     $(".module-background, .module-unit").addClass("module-active");
   });
@@ -21,17 +24,5 @@ $(document).ready(function() {
       }
     }
   });
-
-  $( "#slider-range" ).slider({
-    range: true,
-    min: 0,
-    max: 500,
-    values: [ 75, 300 ],
-    slide: function( event, ui ) {
-      $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-    }
-  });
-  $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
 });

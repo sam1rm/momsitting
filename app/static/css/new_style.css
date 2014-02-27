@@ -11,6 +11,15 @@ h1,h2,h3,h4,h5,h6 {
     font-family: 'Raleway', sans-serif;
 }
 
+input {
+    border-radius:0px;
+}
+
+label {
+    font-family: 'Raleway', sans-serif;   
+    font-weight:400;
+}
+
 #main-home {
     height:94%;
     background-image: url('/static/img/mom.jpg');
@@ -128,6 +137,8 @@ h1,h2,h3,h4,h5,h6 {
     font-size:24px;
 }
 
+
+
 .navbar.navbar-default {
     background-color:transparent;
     border-color:transparent;
@@ -157,4 +168,44 @@ h1,h2,h3,h4,h5,h6 {
 
 #try-it-now-div {
     margin-top:5%;
+}
+
+
+.modal-content {
+    border: 3px solid #ff7bac;
+}
+
+.modal-header {
+    border-bottom:0px;
+}
+
+.modal-title{
+    text-align:center;
+}
+
+.two-signup-checkboxes {
+    font-family: 'Raleway', sans-serif;
+    color:black;   
+    font-weight:700;
+}
+
+#need-childcare {
+    display:block;
+}
+
+#offer-childcare-step-2 {
+    display:none;
+}
+
+#privacy-policy {
+ font-family: 'Raleway', sans-serif;   
+ font-size:12px;
+}
+
+.btn.btn-submit{
+    color:white;
+    background-color: #ff7bac;
+    font-size:14px;   
+    font-family: 'Raleway', sans-serif;   
+    font-weight:700;
 }
