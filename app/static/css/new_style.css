@@ -25,6 +25,13 @@ label {
     height:94%;
     background-image: url('/static/img/mom.jpg');
     background-repeat: no-repeat;
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-size: 100%;
+    background-position: 50% 50%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -46,6 +53,7 @@ label {
     text-align:center;
     padding-top:6px;
     height:6%;
+    padding-top:0.75%;
     background-color: #ff7bac;
 
 }
@@ -79,7 +87,7 @@ label {
     position:relative;
     font-weight:bold;
     color:black;
-    margin-top:30px;
+    margin-top:5%;
     margin-left:25px;
     z-index:2;
 }
@@ -100,6 +108,18 @@ label {
     margin-right:25px;
     line-height:125%;
     font-family: 'Raleway', sans-serif;
+    margin-top:7.5%;
+}
+
+#intro-text-next {
+    margin-top:5%;   
+    position:relative;
+    z-index:2;
+    color:grey;
+    margin-left:25px;
+    margin-right:25px;
+    line-height:125%;
+    font-family: 'Raleway', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -110,6 +130,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-left:25px;
     position:relative;
     z-index:2;
+    margin-top:5%;
 }
 
 #zip-text{
@@ -232,6 +253,6 @@ h1,h2,h3,h4,h5,h6 {
 
 #childhood-experience-years {
     margin-top:6px;
-    margin-left:-5px;
+    margin-left:-22px;
     float:left;
 }
