@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block header_scripts %}
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL9XtyxxQSjUzHFeeAlYx13ts7uwA7QBg&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(37.8717, -122.2728);
+
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById("map"),
+            mapOptions);
+
+        var contentString = '<div class="map-info-content">'+
+            '<div class="sitter-info">' +
+            '<div class="text">' +
+            '<h1 id="firstHeading" class="firstHeading">Karina</h1>'+
+            '<h2 class="secondHeading">5 years of experience</h2>' +
+            '</div>' + 
+            '<h3 class="salary"><span class="money">$125</span> a week</h3>' +
+            '</div>' + 
+            '<a href="#" class="view-profile">View Profile</a>' +
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"Hello World!"
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+{% endblock %}
+
+{% block content %}
+<div id="base-body">
+    <div id="row">
+        <div id="search-tagline">
+            <h1 style="display:inline; color:#ff7bac">5&nbsp;</h1><h2 id="search-tagline-text" style="display:inline"><span>Momsitters found near you</span></h2>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default zip-dropdown dropdown-toggle" data-toggle="dropdown">
+                20010 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">20010</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="map" id="map">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer_scripts %}
+{% endblock %}

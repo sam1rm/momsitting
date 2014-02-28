@@ -11,6 +11,14 @@ h1,h2,h3,h4,h5,h6 {
     font-family: 'Raleway', sans-serif;
 }
 
+#base-main {
+    height:94%;
+}
+
+#base-footer {
+    height:6%;
+}
+
 input {
     border-radius:0px;
     font-family: 'Raleway', sans-serif;
@@ -43,7 +51,7 @@ label {
     background-color: #ff7bac;   
     color:white;
     text-align:center;
-    padding-top:0.75%;
+    padding-top:1.25%;
     font-size:14px;
     font-family: 'Raleway', sans-serif;
 }
@@ -53,7 +61,7 @@ label {
     text-align:center;
     padding-top:6px;
     height:6%;
-    padding-top:0.75%;
+    padding-top:1.25%;
     background-color: #ff7bac;
 
 }
@@ -91,13 +99,26 @@ label {
     margin-left:25px;
     z-index:2;
 }
+
+#base-main-logo {
+    font-size:50px;
+    font-family:'LittleDays';
+    font-weight:bold;
+    color:black;
+    z-index:2;
+    margin-left:15px;
+    margin-top:15px;
+}
 #white-box {
     height:94%;
     background-color:white;
     opacity:0.60;
     position:absolute;
     z-index:1;
-    
+}
+
+#base-main-navbar{
+    margin-top:10px;
 }
 
 #intro-text {
@@ -255,4 +276,33 @@ h1,h2,h3,h4,h5,h6 {
     margin-top:6px;
     margin-left:-22px;
     float:left;
+}
+
+#base-nav {
+ height:15%;   
+}
+
+#base-body {
+    height:83%
+}
+
+#search-tagline{
+    text-align:center;
+}
+
+#num-results-search {
+    color:#ff7bac;
+}
+
+#search-tagline-text span{
+    padding-top:5px;
+}
+
+#map {
+    float: left;
+    height:500px;
+    z-index:10;
+    width:100%;
+    float:right;
+
 }

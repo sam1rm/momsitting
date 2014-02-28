@@ -9,13 +9,17 @@ def index():
 def profile():
 	return render_template('profile.html')
 
+@app.route('/old-search/')
+def old_search():
+    return render_template('search.html')
+
 @app.route('/search-list/')
 def search_list():
     return render_template('search_list.html')
 
 @app.route('/search/')
 def search():
-    return render_template('search.html')
+    return render_template('new_search.html')
 
 @app.route('/settings/')
 def settings():
@@ -28,3 +32,8 @@ def step1():
 @app.route('/step2/')
 def step2():
     return render_template('step2.html')
+
+@app.route('/base/')
+def base():
+    return render_template('base.html')
+
