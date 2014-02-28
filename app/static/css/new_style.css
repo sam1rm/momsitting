@@ -13,6 +13,7 @@ h1,h2,h3,h4,h5,h6 {
 
 input {
     border-radius:0px;
+    font-family: 'Raleway', sans-serif;
 }
 
 label {
@@ -208,4 +209,29 @@ h1,h2,h3,h4,h5,h6 {
     font-size:14px;   
     font-family: 'Raleway', sans-serif;   
     font-weight:700;
+}
+
+#privacy-link, #terms-link {
+    color:#ff7bac;
+}
+
+#form-validation-alert{
+    color:red;
+    text-align:center;
+    font-family: 'Raleway', sans-serif;   
+    display: none;
+}
+
+#offer-childcare-step-2 {
+    font-family: 'Raleway', sans-serif;   
+}
+
+#preferred-ages-checkboxes {
+    margin-top:6px;
+}
+
+#childhood-experience-years {
+    margin-top:6px;
+    margin-left:-5px;
+    float:left;
 }

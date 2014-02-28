@@ -45,41 +45,44 @@
             </div>
           </div>
           <br>
+          <div id="form-validation-alert" class="row">
+            Please fill in all fields
+          </div>
           <div id="need-childcare">
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Name</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="full-name">
+                  <input type="text" id="need-care-name" class="form-control" id="full-name">
                 </div>
               </div>
               <div class="form-group">
                 <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
                 <div class="col-sm-5">
-                  <input type="email" class="form-control" id="email-input" >
+                  <input type="email" id="need-care-email" class="form-control" id="email-input" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Zip</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" id="email-input">
+                  <input type="text" id="need-care-zip" class="form-control" id="email-input">
                 </div>
               </div>
               <div class="form-group">
                 <label for="password" class="col-sm-2 col-sm-offset-2 control-label">Password</label>
                 <div class="col-sm-5">
-                  <input type="password" class="form-control" id="password">
+                  <input type="password" id="need-care-password" class="form-control" id="password">
                 </div>
               </div>
               <div class="form-group">
                 <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Confirm Password</label>
                 <div class="col-sm-5">
-                  <input type="password" class="form-control" id="password">
+                  <input type="password" id="need-care-password-confirm" class="form-control" id="password">
                 </div>
               </div>
               <div id="privacy-policy" class="row">
                 <div class="col-sm-10 col-md-offset-1">
-                  By clicking <span id="next-or-submit"> 'Next'</span> you agree to our Terms of Use and Privacy Policy &nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-default btn-submit">Submit</button>
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
                 </div>
                 <br>
               </div>
@@ -95,56 +98,51 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Childcare Experience</label>
-                <div class="col-sm-3">
-                  <input type="email" class="form-control" id="email-input" >
+                <label for="email-input" class="col-sm-4 control-label">Childcare Experience</label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control" id="email-input" > 
+                </div>
+                <div class="col-sm-2">
+                  <div id="childhood-experience-years"> years
+                  </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Languages</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="email-input">
+                  <input placeholder="English, Spanish, Gujrati, etc."type="text" class="form-control" id="email-input">
                 </div>
               </div>
               <div class="form-group">
-                <label for="password" class="col-sm-2 col-sm-offset-2 control-label">Preferred Age</label>
+                <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Preferred Ages</label>
                 <div class="col-sm-5">
-                  <div class="form-group">
-                    <div class="checkbox">
-                      <label>
-                        <input id="need-checkbox"type="checkbox" checked> 0-2
-                      </label>
-                    </div> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="checkbox">
-                      <label>
-                        <input id="offer-checkbox" type="checkbox"> 3-5
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input id="offer-checkbox" type="checkbox"> 6-8
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input id="offer-checkbox" type="checkbox"> 9-11
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input id="offer-checkbox" type="checkbox"> 12+
-                      </label>
-                    </div>
+                  <div class="preferred-ages-checkboxes">
+                    <input type="checkbox">&nbsp;0-2&nbsp;&nbsp;<input type="checkbox">&nbsp;3-5&nbsp;&nbsp;<input type="checkbox">&nbsp;6-8&nbsp;&nbsp;<input type="checkbox">&nbsp;9-11&nbsp;&nbsp;<input type="checkbox">&nbsp;12+
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="password" class="col-sm-2 col-sm-offset-2 control-label">Confirm Password</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" id="password">
+                <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Attributes</label>
+                <div class="col-sm-7">
+                  <div class="preferred-ages-checkboxes">
+                    <input type="checkbox">&nbsp;Licensed&nbsp;&nbsp;<input type="checkbox">&nbsp;Private&nbsp;&nbsp;<input type="checkbox">&nbsp;Background Check&nbsp;&nbsp;<br><input type="checkbox">&nbsp;CPR Certified&nbsp;&nbsp;<input type="checkbox">&nbsp;Part Time&nbsp;&nbsp;<input type="checkbox">&nbsp;Full Time
+                  </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-4 control-label">Weekly Full Time Rate</label>
+                <div class="col-sm-3">
+                  <input placeholder="$" type="text" class="form-control" id="password">
+                </div>
+              </div>
+              <div id="privacy-policy" class="row">
+                <div class="col-sm-10 col-md-offset-1">
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
+                </div>
+                <br>
+              </div>
             </form>
+            <br>
           </div>
           
         </div>
