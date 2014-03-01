@@ -653,3 +653,8 @@ strong {
 
 .slider-text {
   margin-bottom: 15px; }
+
+#further-proceed-alert{
+  color:green;
+  text-align:center;
+}

@@ -61,7 +61,7 @@ label {
     text-align:center;
     padding-top:6px;
     height:6%;
-    padding-top:1.25%;
+    padding-top:1.00%;
     background-color: #ff7bac;
 
 }
@@ -177,10 +177,37 @@ h1,h2,h3,h4,h5,h6 {
     color:white;
     background-color: #ff7bac;
     width:100%;
-    font-size:24px;
+    font-size: 24px;
 }
 
+.btn.login-btn {
+    color:white;
+    background-color: #ff7bac;
+    width:75%;
+    font-size:16px;
+}
 
+.btn.logout-btn {
+    color:white;
+    background-color: #ff7bac;
+    width:100%;
+    font-size:16px;
+}
+.btn.save-changes-btn {
+    color:white;
+    background-color: #ff7bac;
+    width:100%;
+    font-size:16px;
+}
+
+.btn.contact-btn {
+    color:white;
+    background-color: #ff7bac;
+    width:100%;
+    font-size:24px;
+    font-weight:700;
+    margin-top:15px;
+}
 
 .navbar.navbar-default {
     background-color:transparent;
@@ -257,7 +284,7 @@ h1,h2,h3,h4,h5,h6 {
     color:#ff7bac;
 }
 
-#form-validation-alert{
+#form-validation-alert, #form-validation-login-alert{
     color:red;
     text-align:center;
     font-family: 'Raleway', sans-serif;   
@@ -279,11 +306,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #base-nav {
- height:15%;   
+ height:13%;   
 }
 
 #base-body {
-    height:83%
+    height:85%
 }
 
 #search-tagline{
@@ -300,9 +327,171 @@ h1,h2,h3,h4,h5,h6 {
 
 #map {
     float: left;
-    height:500px;
+    height:550px;
     z-index:10;
     width:100%;
     float:right;
 
 }
+
+#price-filter {
+    font-family: 'Raleway', sans-serif;      
+}
+
+#value-min, #value-max{
+    font-weight:700;
+}
+
+.noUi-connect {
+    background:#ff7bac;
+}
+
+.map-info-content h1{
+    margin-top:5px;
+}
+
+.map-info-content h2{
+    margin-top:0px;
+}
+
+.map-info-content h3{
+    margin-top:5px;
+}
+
+.map-info-content {
+  min-width: 250px;
+  overflow: hidden; }
+  .map-info-content .sitter-info {
+    display: block;
+    overflow: hidden;
+    width: 100%; }
+  .map-info-content .text {
+    float: left; }
+  .map-info-content .salary {
+    float: right;
+    width: 44px;
+    height: 44px;
+    padding-top: 10px;
+    text-align: center;
+    background: #eee;
+    /*border-radius: 44px;*/
+    font-size: 10px; }
+    .map-info-content .salary .money {
+      font-weight: 400;
+      display: block; }
+  .map-info-content .firstHeading {
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 0; }
+  .map-info-content .secondHeading {
+    font-size: 12px;
+    margin-bottom: 5px; }
+  .map-info-content .view-profile {
+    background: #ff7bac;
+    display: block;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 5px; }
+    .map-info-content .view-profile:hover {
+      cursor: pointer;
+}
+#profile-header {
+    color:#ff7bac;
+}
+
+.profile {
+    font-family: 'Raleway', sans-serif;         
+}
+
+#profile-name {
+    font-size:60px;
+    color:black;
+}
+
+#profile-info h3, h2{
+    margin-bottom:0px;
+    margin-top:10px;
+}
+
+#profile-header h3{
+    margin:3px;
+    color:black;
+}
+
+#profile-attributes span{
+    color:#ff7bac;
+}
+
+#login-email, #login-password {
+    border-radius:0;
+    border: 2px solid #ff7bac;
+}
+
+#further-proceed-alert{
+  color:green;
+  text-align:center;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+#pic-holder {
+  border: 1px solid #ff7bac;
+  width:250px;
+  height:250px;
+  border-radius: 12px;
+  padding-left:12px;
+  text-align: left;
+  white-space: nowrap;
+  color:#ff7bac;
+}
+
+#pic-holder-2 {
+  border: 1px solid #ff7bac;
+  width:80px;
+  height:80px;
+  border-radius: 12px;
+  padding-left:6px;
+  text-align: left;
+  white-space: nowrap;
+  color:#ff7bac;
+}
+
+#image-preview {
+  margin-top:8px;
+  margin-left:-2px;
+}
+
+#upload-photo {
+    display:none;
+}
+
+.saved-text {
+  color: #57ad5c;
+  display:none;
+}
+
+#image-preview {
+  display:none;
+}
+
+#profile-intro {
+    width:100%; border-radius:4px; border: 1px solid grey;
+    font-family: 'Raleway', sans-serif;         
+    height:100px;
+}
+
+textarea {
+   font-family: 'Raleway', sans-serif;
+} 

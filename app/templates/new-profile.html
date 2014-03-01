@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block header_scripts %}
+{% endblock %}
+
+{% block content %}
+<div class="profile">
+    {% if user.languages and (not user.introduction or not user.profile_url) %}
+    <div class="row-fluid">
+        <div class="col-sm-10 col-sm-offset-2">
+            <div style="width:80%; background:#ff7bac; color:white"class="alert alert-info alert-dismissable">
+              <button style="color:white" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <span style="text-align:center;font-size:22px;font-weight:700">
+                We highly recommend uploading a photo and writing a short bio about yourself!
+              </span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div id="profile-header" class="row-fluid">
+        {% if not user.languages %}
+        <div id="profile-pic" class="col-sm-2 col-sm-offset-3">
+            <img id="profile-photo" height="250" width="250" src="/static/img/profile-photo.png">
+        </div>
+        {% else %}
+        <div id="profile-pic" class="col-sm-2 col-sm-offset-3">
+            <div id="pic-holder">
+                {% if user.profile_url %}
+                  <img style="display:block" width="250" height="250"id="image-preview" src="{{user.profile_url}}"/>
+                {% else %}
+                  <span id="default-photo" class="glyphicon glyphicon-user" style="margin-left:25px;margin-top:25px;font-size:175px;text-align:center;padding-top:5px"></span>
+                {% endif %}
+              </div>
+        </div>
+        {% endif %}
+        <div style="margin-left:25px" class="col-sm-4">
+            
+            {% if not user.languages %}
+            <div id="profile-name">
+                Karina
+            </div>
+            <br>
+            <h3><strong>Weekly full time rate:</strong> $150</h3>
+            <h3><strong>City:</strong> Washington DC</h3>
+            <h3><strong>Zip:</strong> 22101</h3>
+            <h3><strong>Preferred ages:</strong> 5-10</h3>
+            <h3>Languages:<strong> English, Spanish</h3>
+            {% else %}
+            <div id="profile-name">
+                {{user.name}}
+            </div>
+            <br>
+            <h3><strong>Weekly full time rate:</strong> {{user.weekly_full_time_rate}}</h3>
+            <h3><strong>City:</strong> Washington DC</h3>
+            <h3><strong>Zip:</strong> {{user.zip_code}}</h3>
+            <h3><strong>Preferred ages: </strong>
+                {% if user.age_group_0_2 %}
+                    0-2,&nbsp;
+                {% endif %}
+                {% if user.age_group_3_5 %}
+                    3-5,&nbsp;
+                {% endif %}
+                {% if user.age_group_6_8 %}
+                    6-8,
+                {% endif %}
+                {% if user.age_group_9_11 %}
+                    9-11,&nbsp;
+                {% endif %}
+                {% if user.age_group_1w %}
+                    12+,&nbsp;
+                {% endif %}
+            </h3>
+            <h3><strong>Languages:</strong>{{user.languages}}</h3>
+            {% endif %}
+
+        </div>
+    </div>
+    <div id="profile-info" class="row-fluid">
+        <div class="col-sm-offset-3 col-sm-6"> 
+            <h2 id="profile-header">
+                <strong>Introduction</strong>
+            </h2 >
+            {% if not user.languages %}
+            <h3>
+                Hi, my name is Karina, and I love kids! I have a 2 year old and a 3 year old and would love to help anyone with their children under 6. Please contact me if you need help!
+            </h3>
+            {% else %}
+                {% if user.introduction != None or user.introduction == '' %}
+                    <h3>{{user.introduction}}</h3>
+                {% else %}
+                    <h3><strong>You have no intro yet! Please add one by editing your profile. This will help increase traction to your profile. <strong>
+                    </h3>
+                {% endif %}
+            {% endif %}
+            <h2 id="profile-header">
+                <strong>Attributes</strong>
+            </h2>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div id="profile-attributes"class="row-fluid">
+                        <h3 style="margin-top:10">
+                            {% if not user.languages %}
+                            <span class="glyphicon glyphicon-ok">
+                            </span>&nbsp;Licensed 
+                            <span class="glyphicon glyphicon-ok">
+                            </span>&nbsp;Private
+                            <span class="glyphicon glyphicon-ok">
+                            </span>&nbsp;CPR Certified <br>
+                            <span class="glyphicon glyphicon-ok">
+                            </span>&nbsp;Part Time
+                            {% else %}
+                                {% if user.licensed %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;
+                                    <span style="color:black">Licensed </span> </span>
+                                {% endif %} 
+                                {% if user.private %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;<span style="color:black">Private </span></span>
+                                {% endif %}
+                                {% if user.cpr_certified %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;<span style="color:black">CPR Certified </span></span>
+                                {% endif %}
+                                {% if user.part_time %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;<span style="color:black">Part Time </span></span>
+                                {% endif %}
+                                {% if user.full_time %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;<span style="color:black">Full Time </span></span>
+                                {% endif %}
+                                {% if user.background_check %}
+                                    <span style="white-space:nowrap"><span class="glyphicon glyphicon-ok">
+                                    </span>&nbsp;<span style="color:black">Background Check </span></span>
+                                {% endif %}
+                            {% endif %}
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    {% if not user.languages %}
+                    <button class="btn btn-default contact-btn">
+                        Contact Now
+                    </button>
+                    {% else %}
+                    <a data-toggle="modal" data-target="#accountModal" href="javascript:void(0);" </a>
+                        <button class="btn btn-default contact-btn">
+                            Edit Profile
+                        </button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

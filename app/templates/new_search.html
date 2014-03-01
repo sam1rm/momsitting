@@ -6,7 +6,7 @@
     </script>
     <script type="text/javascript">
       function initialize() {
-        var myLatlng = new google.maps.LatLng(37.8717, -122.2728);
+        var myLatlng = new google.maps.LatLng(38.9333,-77.0293);
 
         var mapOptions = {
           center: myLatlng,
@@ -19,11 +19,15 @@
             '<div class="sitter-info">' +
             '<div class="text">' +
             '<h1 id="firstHeading" class="firstHeading">Karina</h1>'+
-            '<h2 class="secondHeading">5 years of experience</h2>' +
+            '<h2 class="secondHeading"><i>5 years of experience</i></h2>' +
             '</div>' + 
             '<h3 class="salary"><span class="money">$125</span> a week</h3>' +
             '</div>' + 
-            '<a href="#" class="view-profile">View Profile</a>' +
+            {% if logged_in %}
+            '<a href="/profile/" class="view-profile">View Profile</a>' +
+            {% else %}
+            '<a href="#" data-toggle="modal" data-target="#signupModal" id="view-profile-signup" class="view-profile">View Profile</a>' +
+            {% endif %}
             '</div>';
 
         var infowindow = new google.maps.InfoWindow({
@@ -43,19 +47,220 @@
       google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
+    <script src="/static/js/jquery.nouislider.min.js"></script>
 {% endblock %}
 
 {% block content %}
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div style="color:green; text-align:center" id="further-proceed-alert" class="row">
+                Please signup to view entire profile.
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Sign Up</h3>
+          </div>
+          <div class="two-signup-checkboxes">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2" style="float:center;text-align:center">
+                <form class="form-inline" role="form">
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input id="need-checkbox"type="checkbox" checked> I need childcare
+                      </label>
+                    </div> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="checkbox">
+                      <label>
+                        <input id="offer-checkbox" type="checkbox"> I can offer childcare
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div id="form-validation-alert" class="row">
+            Please fill in all fields
+          </div>
+          <div id="need-childcare">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Name</label>
+                <div class="col-sm-5">
+                  <input type="text" id="need-care-name" class="form-control" id="full-name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+                <div class="col-sm-5">
+                  <input type="email" id="need-care-email" class="form-control" id="email-input" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Zip</label>
+                <div class="col-sm-3">
+                  <input type="text" id="need-care-zip" class="form-control" id="email-input">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-2 col-sm-offset-2 control-label">Password</label>
+                <div class="col-sm-5">
+                  <input type="password" id="need-care-password" class="form-control" id="password">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Confirm Password</label>
+                <div class="col-sm-5">
+                  <input type="password" id="need-care-password-confirm" class="form-control" id="password">
+                </div>
+              </div>
+              <div id="privacy-policy" class="row">
+                <div class="col-sm-10 col-md-offset-1">
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
+                </div>
+                <br>
+              </div>
+            </form>
+            <br>
+          </div>
+          <div id="offer-childcare-step-2">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="address" class="col-sm-2 col-sm-offset-2 control-label">Address</label>
+                <div class="col-sm-5">
+                  <input placeholder="street, city, state"type="text" class="form-control" id="address">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-4 control-label">Childcare Experience</label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control" id="momsitter-child-experience" > 
+                </div>
+                <div class="col-sm-2">
+                  <div id="childhood-experience-years"> years
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Languages</label>
+                <div class="col-sm-5">
+                  <input placeholder="English, Spanish, Gujrati, etc."type="text" id="momsitter-languages" class="form-control" id="email-input">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Preferred Ages</label>
+                <div class="col-sm-5">
+                  <div class="preferred-ages-checkboxes">
+                    <input id="pref-age-1" type="checkbox">&nbsp;0-2&nbsp;&nbsp;<input id="pref-age-2" type="checkbox">&nbsp;3-5&nbsp;&nbsp;<input id="pref-age-3" type="checkbox">&nbsp;6-8&nbsp;&nbsp;<input id="pref-age-4" type="checkbox">&nbsp;9-11&nbsp;&nbsp;<input id="pref-age-5"type="checkbox">&nbsp;12+
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Attributes</label>
+                <div class="col-sm-7">
+                  <div class="preferred-ages-checkboxes">
+                    <input id='attr-1' type="checkbox">&nbsp;Licensed&nbsp;&nbsp;<input id='attr-2' type="checkbox">&nbsp;Private&nbsp;&nbsp;<input id='attr-3'  type="checkbox">&nbsp;Background Check&nbsp;&nbsp;<br><input id='attr-4'  type="checkbox">&nbsp;CPR Certified&nbsp;&nbsp;<input id='attr-5' type="checkbox">&nbsp;Part Time&nbsp;&nbsp;<input id='attr-6' type="checkbox">&nbsp;Full Time
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-4 control-label">Weekly Full Time Rate</label>
+                <div class="col-sm-3">
+                  <input placeholder="$" type="text" class="form-control" id="full-time-rate">
+                </div>
+              </div>
+              <div id="privacy-policy" class="row">
+                <div class="col-sm-10 col-md-offset-1">
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="momsitting-signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
+                </div>
+                <br>
+              </div>
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Login</h3>
+          </div>
+          <br>
+          <div id="form-validation-login-alert" class="row">
+            Please fill in all fields
+          </div>
+          <div id="login-form">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="login-email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Password</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="login-password" >
+                </div>
+              </div>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col-sm-offset-4 col-sm-4">
+                <button id="login-btn" type="button" data-toggle="modal" class="btn btn-default try-btn">Login</button>   
+              </div>
+            </div>
+            <br>
+            <br>
+            <div style="text-align:center" id="privacy-policy" class="row">
+                <div class="col-sm-8 col-md-offset-2">
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                </div>
+                <br>
+              </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
 <div id="base-body">
-    <div id="row">
+         {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <div class="row-fluid">
+            <div class="col-sm-10 col-sm-offset-1">
+            <ul class=flashes>
+            {% for message in messages %}
+              <div id='user-account-create-alert' class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                </button>
+                <span style="text-align:center">
+                {{ message }}
+                </span>
+            </div>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+          {% endif %}
+        {% endwith %}
+    <div id="row-fluid">
         <div id="search-tagline">
             <h1 style="display:inline; color:#ff7bac">5&nbsp;</h1><h2 id="search-tagline-text" style="display:inline"><span>Momsitters found near you</span></h2>
         </div>
     </div>
     <br>
     <br>
-    <div class="row">
-        <div class="col-md-offset-1 col-md-3">
+    <div class="row-fluid">
+        <div class="col-md-offset-2 col-md-2">
             <div class="btn-group">
               <button type="button" class="btn btn-default zip-dropdown dropdown-toggle" data-toggle="dropdown">
                 20010 <span class="caret"></span>
@@ -64,11 +269,81 @@
                 <li><a href="#">20010</a></li>
               </ul>
             </div>
+            <div id="price-filter">
+                <h2> Price </h2>
+                    <div style="width:75%"class="noUiSlider"></div>
+                    <br>
+                    Min:&nbsp;$<strong><span id="value-min"></span></strong> 
+                    Max:&nbsp;$<strong> <span id="value-max"></span></strong>
+                <h2> Child's Age </h2>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 0-5
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 6-9
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 10 +
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <h2> Others </h2>
+            <form role="form">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Licensed
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> CPR Certified
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Background Check
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> First Aid Certified
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> After School Care
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Part-Time
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Full-Time
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <button type="button" class="btn btn-default search-btn">Search</button>
         </div>
         <div class="col-md-7">
             <div class="map" id="map">
         </div>
     </div>
+    <br>
+    <br>
 </div>
 {% endblock %}
 
