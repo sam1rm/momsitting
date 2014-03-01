@@ -45,17 +45,17 @@ $(document).ready(function() {
         }
     }
 
-  $('#try-it-now-button').click(function() {
-    $('#signupModal').modal();
-  });
+  // $('#try-it-now-button').click(function() {
+  //   $('#signupModal').modal();
+  // });
 
-  $('#signup-nav').click(function() {
-    $('#signupModal').modal();
-  });
+  // $('#signup-nav').click(function() {
+  //   $('#signupModal').modal();
+  // });
 
-  $('#login-nav').click(function() {
-    $('#loginModal').modal();
-  });
+  // $('#login-nav').click(function() {
+  //   $('#loginModal').modal();
+  // });
 
   $('#profile-tab').click(function (e) {
     $(this).tab('show')
