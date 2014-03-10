@@ -47,18 +47,19 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul id="base-main-navbar" class="nav navbar-nav navbar-right">
+              <li><a href="mailto:info@momsitting.com">Contact</a></li>
               <li><a href="javascript:void(0);">Blog</a></li>
               {% if not logged_in %}
-              <li><a data-toggle="modal" data-target="#loginModal"id="login-nav" href="javascript:void(0);">Login</a></li>
-              <li><a data-toggle="modal" data-target="#signupModal"id="signup-nav" href="javascript:void(0);">Sign Up</a></li>
+              <li><a data-toggle="modal" data-target="#loginModal"id="login-nav" href="#">Login</a></li>
+              <li><a data-toggle="modal" data-target="#signupModal"id="signup-nav" href="#">Sign Up</a></li>
               {% else %}
-              <li><a data-toggle="modal" data-target="#accountModal"id="account-nav" href="javascript:void(0);">My Account</a></li>
+              <li><a data-toggle="modal" data-target="#accountModal"id="account-nav" href="#">My Account</a></li>
               {% endif %}
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-    {% if not user.languages %}
+    {% if user and  not user.languages %}
     <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -108,7 +109,8 @@
         </div>
       </div>
     </div>
-    {% else %}
+    {% endif %}
+    {% if user and user.languages %}
     <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -162,7 +164,7 @@
                   <div class="form-group">
                     <label for="email-input" class="col-sm-4 control-label">Childcare Experience</label>
                     <div class="col-sm-2">
-                      <input value="{{user.childcare_experience}}" type="number" class="form-control" id="momsitter-child-experience" > 
+                      <input min="0"value="{{user.childcare_experience}}" type="number" class="form-control" id="momsitter-child-experience" > 
                     </div>
                     <div class="col-sm-2">
                       <div id="childhood-experience-years"> years
@@ -170,9 +172,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Languages</label>
+                    <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Language(s) Spoken</label>
                     <div class="col-sm-5">
-                      <input placeholder="English, Spanish, Gujrati, etc."type="text" value="{{user.languages}}"id="momsitter-languages" class="form-control" id="email-input">
+                      <input placeholder="English, Spanish, Hindi, etc."type="text" value="{{user.languages}}"id="momsitter-languages" class="form-control" id="email-input">
                     </div>
                   </div>
                   <div class="form-group">
@@ -217,11 +219,11 @@
                         {% endif %}
                         >&nbsp;Licensed&nbsp;&nbsp;
 
-                        <input id='attr-2' type="checkbox"
+                        <!-- <input id='attr-2' type="checkbox"
                         {% if user.private %}
                         checked 
                         {% endif %}
-                        >&nbsp;Private&nbsp;&nbsp;
+                        >&nbsp;Private&nbsp;&nbsp; -->
                         
                         <input id='attr-3'  type="checkbox"
                         {% if user.background_check %}

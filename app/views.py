@@ -14,6 +14,20 @@ def index():
     return render_template('new_index.html', \
         logged_in = session.get('user_id'), user=user)
 
+@app.route('/terms/')
+def tos():
+    user = None
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+    return render_template('tos.html', user=user)
+
+@app.route('/privacy/')
+def privacy():
+    user = None
+    if session.get('user_id'):
+        user = User.query.get(session.get('user_id'))
+    return render_template('privacy.html', user=user)
+
 @app.route('/create-user/', methods=('GET', 'POST'))
 def create_user():
     if request.method == "POST":

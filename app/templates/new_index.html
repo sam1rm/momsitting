@@ -18,10 +18,328 @@
     <script src="/static/js/modal.js"></script>
     <script src="/static/js/momsitting.js"></script>
     <script src="/static/js/jquery.nouislider.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
   </head>
 
   <body>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Login</h3>
+          </div>
+          <br>
+          <div id="form-validation-login-alert" class="row">
+            Please fill in all fields
+          </div>
+          <div id="login-form">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="login-email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Password</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="login-password" >
+                </div>
+              </div>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col-sm-offset-4 col-sm-4">
+                <button id="login-btn" type="button" data-toggle="modal" class="btn btn-default try-btn">Login</button>   
+              </div>
+            </div>
+            <br>
+            <br>
+            <div style="text-align:center" id="privacy-policy" class="row">
+                <div class="col-sm-8 col-md-offset-2">
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="/terms/" id="terms-link"> Terms of Use </a> and <a href="/privacy/"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                </div>
+                <br>
+              </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
      
+
+    {% if user and not user.languages %}
+    <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Your Account Details</h3>
+          </div>
+          <div style="color:green" id="form-validation-alert" class="row">
+            Please fill in all fields
+          </div>
+          <div id="need-childcare">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Name</label>
+                <div class="col-sm-5">
+                  <input type="text" id="need-care-name" class="form-control" value="{{user.name}}"id="full-name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+                <div class="col-sm-5">
+                  <input type="email" id="need-care-email" class="form-control" value="{{user.email}}" id="email-input" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Zip</label>
+                <div class="col-sm-3">
+                  <input type="text" id="need-care-zip" class="form-control" value="{{user.zip_code}}"id="email-input">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                  <button id="user-save-changes-btn" type="button" data-toggle="modal" class="btn btn-default save-changes-btn">Save Changes </button> 
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <a href="/logout/">
+                  <div class="col-md-offset-4 col-md-4">
+                    <button type="button" class="btn btn-default logout-btn">Logout </button> 
+                  </div>
+                </a>
+              </div>
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if user and user.languages %}
+    <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">My Account</h3>
+          </div>
+          <ul class="nav nav-tabs">
+            <li class="active"><a id="profile-tab" href="#profile" data-toggle="tab">Profile</a></li>
+            <li><a href="#general" id="general-tab" data-toggle="tab">General</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="profile">
+              <div style="display:block" id="change-profile">
+                <br>
+                <br>
+                <div style="color:green" id="form-validation-alert" class="row">
+                Please fill in all fields
+                </div>
+                <div style="text-align:center; float:center;" class="row">
+                  <div style="margin:auto" id="pic-holder-2">
+                    {% if user.profile_url %}
+                      <img style="display:block" width="80" height="80"id="image-preview" src="{{user.profile_url}}"/>
+                    {% else %}
+                      <span id="default-photo" class="glyphicon glyphicon-user" style="font-size:65px;text-align:center;margin-right:3px; padding-top:5px"></span>
+                      <img width="80" height="80"id="image-preview" src="#"/>
+                    {% endif %}
+                  </div>
+                  <a id="upload-photo-link" href="javascript:void(0);">
+                    <h5 style="color:grey">
+                      <u>CHANGE PICTURE</u>
+                    </h5>
+                    <span id="saved-photo" class="saved-text">Photo Successfully Uploaded!</span>
+                  </a>
+                  <input id="upload-photo" type="file"/>
+                </div>
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label for="address" class="col-sm-2 col-sm-offset-2 control-label">Short Bio</label>
+                    <div class="col-sm-5">
+                      <textarea id="profile-intro" style="width:100%; border-radius:4px; border: 1px solid grey;"> {{user.introduction}}
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="address" class="col-sm-2 col-sm-offset-2 control-label">Address</label>
+                    <div class="col-sm-5">
+                      <input value="{{user.address}}" placeholder="street, city, state"type="text" class="form-control" id="address">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email-input" class="col-sm-4 control-label">Childcare Experience</label>
+                    <div class="col-sm-2">
+                      <input value="{{user.childcare_experience}}" min="0" type="number" class="form-control" id="momsitter-child-experience" > 
+                    </div>
+                    <div class="col-sm-2">
+                      <div id="childhood-experience-years"> years
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Languages</label>
+                    <div class="col-sm-5">
+                      <input placeholder="English, Spanish, Hindi, etc."type="text" value="{{user.languages}}"id="momsitter-languages" class="form-control" id="email-input">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Preferred Ages</label>
+                    <div class="col-sm-5">
+                      <div class="preferred-ages-checkboxes">
+                        <input id="pref-age-1" type="checkbox"
+                        {% if user.age_group_0_2 %}
+                        checked
+                        {% endif %}
+                        >&nbsp;0-2&nbsp;&nbsp;
+                        <input id="pref-age-2" type="checkbox"
+                        {% if user.age_group_3_5 %}
+                        checked
+                        {% endif %}
+                        >&nbsp;3-5&nbsp;&nbsp;
+                        <input id="pref-age-3" type="checkbox"
+                        {% if user.age_group_6_8 %}
+                        checked
+                        {% endif %}
+                        >&nbsp;6-8&nbsp;&nbsp;
+                        <input id="pref-age-4" type="checkbox"
+                        {% if user.age_group_9_11 %}
+                        checked
+                        {% endif %}
+                        >&nbsp;9-11&nbsp;&nbsp;<br>
+                        <input id="pref-age-5"type="checkbox"
+                        {% if user.age_group_12 %}
+                        checked
+                        {% endif %}
+                        >&nbsp;12+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Attributes</label>
+                    <div class="col-sm-7">
+                      <div class="preferred-ages-checkboxes">
+                        <input id='attr-1' type="checkbox"
+                        {% if user.licensed %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;Licensed&nbsp;&nbsp;
+
+                        <input id='attr-2' type="checkbox"
+                        {% if user.private %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;Private&nbsp;&nbsp;
+                        
+                        <input id='attr-3'  type="checkbox"
+                        {% if user.background_check %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;Background Check&nbsp;&nbsp;
+                        
+                        <br><input id='attr-4'  type="checkbox"
+                        {% if user.cpr_certified %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;CPR Certified&nbsp;&nbsp;
+                        
+                        <input id='attr-5' type="checkbox"
+                        {% if user.part_time %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;Part Time&nbsp;&nbsp;
+                        
+                        <input id='attr-6' type="checkbox"
+                        {% if user.full_time %}
+                        checked 
+                        {% endif %}
+                        >&nbsp;Full Time
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-4 control-label">Weekly Full Time Rate</label>
+                    <div class="col-sm-3">
+                      <input placeholder="$" type="text" class="form-control" value="{{user.weekly_full_time_rate}}"id="full-time-rate">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                      <button id="momsitter-save-changes-btn" type="button" data-toggle="modal" class="btn btn-default save-changes-btn">Save Changes </button> 
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <a href="/profile/">
+                        <div class="col-md-offset-2 col-md-8">
+                          <button type="button" class="btn btn-default logout-btn">View My Profile </button> 
+                        </div>
+                      </a>
+                  </div>
+                  <br>
+                  <br>
+                </div>
+            </div>
+            <div class="tab-pane" id="general">
+              <div style="color:green" id="form-validation-alert" class="row">
+                <br>
+                Please fill in all fields
+              </div>
+              <div class="row" id="need-childcare">
+                <br>
+                <form class="form-horizontal" role="form">
+                  <div style="margin-top:10px;margin-bottom:10px" class="form-group">
+                    <label for="full-name" class="col-sm-2 col-sm-offset-2 control-label">Name</label>
+                    <div class="col-sm-5">
+                      <input type="text" id="need-care-name" class="form-control" value="{{user.name}}"id="full-name">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div  class="form-group">
+                    <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+                    <div class="col-sm-5">
+                      <input type="email" id="need-care-email" class="form-control" value="{{user.email}}" id="email-input">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Zip</label>
+                    <div class="col-sm-3">
+                      <input type="text" id="need-care-zip" class="form-control" value="{{user.zip_code}}"id="email-input">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                      <button id="user-save-changes-btn" type="button" data-toggle="modal" class="btn btn-default save-changes-btn">Save Changes </button> 
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <a href="/logout/">
+                      <div class="col-md-offset-4 col-md-4">
+                        <button type="button" class="btn btn-default logout-btn">Logout </button> 
+                      </div>
+                    </a>
+                  </div>
+                </form>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
     
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -88,7 +406,7 @@
               </div>
               <div id="privacy-policy" class="row">
                 <div class="col-sm-10 col-md-offset-1">
-                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a target="_blank" href="/terms/" id="terms-link"> Terms of Use </a> and <a target="_blank" href="/terms/"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
                 </div>
                 <br>
               </div>
@@ -114,7 +432,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Languages</label>
+                <label for="email-input" class="col-sm-2 col-sm-offset-2 control-label">Language(s) Spoken</label>
                 <div class="col-sm-5">
                   <input placeholder="English, Spanish, Gujrati, etc."type="text" id="momsitter-languages" class="form-control" id="email-input">
                 </div>
@@ -131,19 +449,19 @@
                 <label for="password" class="col-sm-3 col-sm-offset-1 control-label">Attributes</label>
                 <div class="col-sm-7">
                   <div class="preferred-ages-checkboxes">
-                    <input id='attr-1' type="checkbox">&nbsp;Licensed&nbsp;&nbsp;<input id='attr-2' type="checkbox">&nbsp;Private&nbsp;&nbsp;<input id='attr-3'  type="checkbox">&nbsp;Background Check&nbsp;&nbsp;<br><input id='attr-4'  type="checkbox">&nbsp;CPR Certified&nbsp;&nbsp;<input id='attr-5' type="checkbox">&nbsp;Part Time&nbsp;&nbsp;<input id='attr-6' type="checkbox">&nbsp;Full Time
+                    <input id='attr-1' type="checkbox">&nbsp;Licensed&nbsp;&nbsp;<input id='attr-3'  type="checkbox">&nbsp;Background Check&nbsp;&nbsp;<br><input id='attr-4'  type="checkbox">&nbsp;CPR Certified&nbsp;&nbsp;<input id='attr-5' type="checkbox">&nbsp;Part Time&nbsp;&nbsp;<input id='attr-6' type="checkbox">&nbsp;Full Time
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="password" class="col-sm-4 control-label">Weekly Full Time Rate</label>
                 <div class="col-sm-3">
-                  <input placeholder="$" type="text" class="form-control" id="full-time-rate">
+                  <input type="text" class="form-control" id="full-time-rate">
                 </div>
               </div>
               <div id="privacy-policy" class="row">
                 <div class="col-sm-10 col-md-offset-1">
-                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="#" id="terms-link"> Terms of Use </a> and <a href="#"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="momsitting-signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
+                  By clicking <span id="next-or-submit"> 'Submit' </span> you agree to our <a href="/terms/" target="_blank" id="terms-link"> Terms of Use </a> and <a href="/privacy/" target="_blank"  id="privacy-link">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp; <button id="momsitting-signup-btn" type="button" class="btn btn-default btn-submit">Submit</button>
                 </div>
                 <br>
               </div>
@@ -166,16 +484,14 @@
             <p>Momsitting</p>
           </div>
 
-          <h1 id="intro-text"> 
+          <h1 style="font-weight:100"id="intro-text"> 
           Childcare by moms like you, near you
           </h1>
           <br>
           
-          <h3 id="intro-text-next">
-            Day cares are impersonal <br>
-            & expensive, so let's <br>
-            make childcare motherly<br>
-            & affordable.
+          <h3 style="font-weight:400"id="intro-text-next">
+             Find the right fit <br>
+             and be on your way to <br> motherly and affordable childcare
           </h3>
           <br>
           <br>
@@ -194,7 +510,7 @@
               &nbsp;&nbsp;&nbsp;
             </span>
             <a href="/search/">
-            <button type="button" class="btn btn-default search-btn">Search</button>
+            <button type="button" class="btn btn-default search-btn">Find Childcare</button>
             </a>
           </div>
         </div>
@@ -216,7 +532,8 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Blogs</a></li>
+                  <li><a href="mailto:info@momsitting.com">Contact</a></li>
+                  <li><a href="#">Blog</a></li>
                   {% if not logged_in %}
                   <li><a data-toggle="modal" data-target="#loginModal"id="login-nav" href="#">Login</a></li>
                   <li><a data-toggle="modal" data-target="#signupModal"id="signup-nav" href="#">Sign Up</a></li>
@@ -231,16 +548,25 @@
       
       </div>
     </div>
-    <a href="#how-it-works-nav" style="text-decoration:none">
+    <a data-toggle="modal" id="how-it-works-signup" data-target="#signupModal" href="#" style="text-decoration:none">
       <div id="how-it-works-nav"> 
-        <span id="how-it-works-text"> 
-          How it works &nbsp;
-        </span>
-        <span class="glyphicon glyphicon-chevron-down"></span>
+        <div class="col-md-3 col-md-offset-1">
+          <span id="how-it-works-text"> 
+            I need childcare &nbsp;
+          </span>
+        </div>
+        <div style="text-align:center; font-size:30px" class="col-md-4">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        <div class="col-md-3">
+          <span id="how-it-works-text"> 
+            I can offer childcare &nbsp;
+          </span>
+        </div>
       </div>
     </a>
 
-    <div id="how-it-works">
+<!--     <div id="how-it-works">
         <div class="container-fluid">
           <div id="how-it-works-options" class="row">
             <div class="col-md-6 col-xs-12">
@@ -293,14 +619,14 @@
     <div id="terms-and-contact-nav"> 
       <div class="row">
         <div class="col-xs-6 col-md-6">
-          Terms of use
+          <a target="_blank" href="/terms/"> Terms of use </a>
         </div>
         <div class="col-xs-6 col-md-6">
           Contact us
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   </body>
   <footer>
   </footer>

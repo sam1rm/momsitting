@@ -8,7 +8,7 @@ body, html {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #base-main {
@@ -21,11 +21,11 @@ h1,h2,h3,h4,h5,h6 {
 
 input {
     border-radius:0px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 label {
-    font-family: 'Raleway', sans-serif;   
+    font-family: 'Roboto', sans-serif;   
     font-weight:400;
 }
 
@@ -53,7 +53,7 @@ label {
     text-align:center;
     padding-top:1.25%;
     font-size:14px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #how-it-works-nav {
@@ -68,13 +68,13 @@ label {
 
 #how-it-works-text {
     font-size:20px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #how-it-works {
     height:88%;
     text-align:center;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color:grey;
 }
 
@@ -124,27 +124,29 @@ label {
 #intro-text {
     position:relative;
     z-index:2;
-    color:grey;
+    color:black;
     margin-left:25px;
     margin-right:25px;
     line-height:125%;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top:7.5%;
+    font-weight:normal;
 }
 
 #intro-text-next {
     margin-top:5%;   
     position:relative;
     z-index:2;
-    color:grey;
+    color:black;
+    font-weight:normal;
     margin-left:25px;
     margin-right:25px;
     line-height:125%;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #enter-zip {
@@ -156,7 +158,7 @@ h1,h2,h3,h4,h5,h6 {
 
 #zip-text{
     font-size:16px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color:grey;
     font-weight:700;
 }
@@ -212,7 +214,7 @@ h1,h2,h3,h4,h5,h6 {
 .navbar.navbar-default {
     background-color:transparent;
     border-color:transparent;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color:grey;
     font-weight:500;
     font-size:20px;
@@ -254,7 +256,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .two-signup-checkboxes {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color:black;   
     font-weight:700;
 }
@@ -268,7 +270,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #privacy-policy {
- font-family: 'Raleway', sans-serif;   
+ font-family: 'Roboto', sans-serif;   
  font-size:12px;
 }
 
@@ -276,7 +278,7 @@ h1,h2,h3,h4,h5,h6 {
     color:white;
     background-color: #ff7bac;
     font-size:14px;   
-    font-family: 'Raleway', sans-serif;   
+    font-family: 'Roboto', sans-serif;   
     font-weight:700;
 }
 
@@ -287,12 +289,12 @@ h1,h2,h3,h4,h5,h6 {
 #form-validation-alert, #form-validation-login-alert{
     color:red;
     text-align:center;
-    font-family: 'Raleway', sans-serif;   
+    font-family: 'Roboto', sans-serif;   
     display: none;
 }
 
 #offer-childcare-step-2 {
-    font-family: 'Raleway', sans-serif;   
+    font-family: 'Roboto', sans-serif;   
 }
 
 #preferred-ages-checkboxes {
@@ -335,7 +337,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #price-filter {
-    font-family: 'Raleway', sans-serif;      
+    font-family: 'Roboto', sans-serif;      
 }
 
 #value-min, #value-max{
@@ -403,7 +405,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .profile {
-    font-family: 'Raleway', sans-serif;         
+    font-family: 'Roboto', sans-serif;         
 }
 
 #profile-name {
@@ -488,10 +490,10 @@ h1,h2,h3,h4,h5,h6 {
 
 #profile-intro {
     width:100%; border-radius:4px; border: 1px solid grey;
-    font-family: 'Raleway', sans-serif;         
+    font-family: 'Roboto', sans-serif;         
     height:100px;
 }
 
 textarea {
-   font-family: 'Raleway', sans-serif;
+   font-family: 'Roboto', sans-serif;
 } 

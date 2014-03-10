@@ -4,6 +4,10 @@ $(document).ready(function() {
       $("#upload-photo:hidden").trigger('click');
     });
 
+  $('#how-it-works-signup').mouseover(function() {
+    $('#signupModal').modal();
+  })
+
     $("#upload-photo:hidden").change(function(){
         var file = this.files[0]
         name = file.name; 
@@ -45,18 +49,6 @@ $(document).ready(function() {
         }
     }
 
-  // $('#try-it-now-button').click(function() {
-  //   $('#signupModal').modal();
-  // });
-
-  // $('#signup-nav').click(function() {
-  //   $('#signupModal').modal();
-  // });
-
-  // $('#login-nav').click(function() {
-  //   $('#loginModal').modal();
-  // });
-
   $('#profile-tab').click(function (e) {
     $(this).tab('show')
   })
@@ -92,7 +84,6 @@ $('#general-tab').click(function (e) {
       var data = {
         'make-changes-momsitter': true,
         'licensed': ($('#attr-1').attr('checked')?true:false),
-        'private': ($('#attr-2').attr('checked')?true:false),
         'bg_check': ($('#attr-3').attr('checked')?true:false),
         'cpr': ($('#attr-4').attr('checked')?true:false),
         'part_time': ($('#attr-5').attr('checked')?true:false),
@@ -264,7 +255,6 @@ $('#general-tab').click(function (e) {
         'password': $('#need-care-password').val(),
         'zip': $('#need-care-zip').val(),
         'licensed': ($('#attr-1').attr('checked')?true:false),
-        'private': ($('#attr-2').attr('checked')?true:false),
         'bg_check': ($('#attr-3').attr('checked')?true:false),
         'cpr': ($('#attr-4').attr('checked')?true:false),
         'part_time': ($('#attr-5').attr('checked')?true:false),
@@ -287,7 +277,7 @@ $('#general-tab').click(function (e) {
             dataType: "json",
             success: function(result) {         
                 $('#signupModal').modal('hide');
-                $('#accountModal').modal('show');
+                window.location.replace('/profile/');  
             }
       });  
     }
