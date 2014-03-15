@@ -4,8 +4,28 @@ $(document).ready(function() {
       $("#upload-photo:hidden").trigger('click');
     });
 
-  $('#how-it-works-signup').mouseover(function() {
-    $('#signupModal').modal();
+  $('#how-it-works-signup-momsitter').mouseover(function() {
+    if ($('#account-nav').length == 0) {
+      $('#need-childcare').show()
+      $('#offer-checkbox').prop("checked", true);
+      $('#need-checkbox').prop("checked", false);
+      $('#signup-btn').text("Next");
+      $('#next-or-submit').text("'Next'")
+      $('#signup-btn').addClass('signup-next-btn')
+      $('#signupModal').modal();
+    }
+  })
+
+  $('#how-it-works-signup-need-childcare').mouseover(function() {
+    if ($('#account-nav').length == 0) {
+      $('#need-childcare').show()
+      $('#need-checkbox').prop("checked", true);
+      $('#offer-checkbox').prop("checked", false);
+      $('#signup-btn').text("Submit");
+      $('#next-or-submit').text("'Submit'")
+      $('#signup-btn').removeClass('signup-next-btn')
+      $('#signupModal').modal();
+    }
   })
 
     $("#upload-photo:hidden").change(function(){
@@ -156,6 +176,8 @@ $('#general-tab').click(function (e) {
                   } else {
                     window.location.replace('/search/');
                   }
+              } else if (result.json['admin']) {
+                    window.location.replace('/download/');
               } else {
                   $('#form-validation-login-alert').text('Incorrect username or password.');     
                   $('#form-validation-login-alert').show();     

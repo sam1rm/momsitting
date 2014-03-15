@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, session, url_for, \
-redirect, jsonify, request, flash
+redirect, jsonify, request, flash, make_response
 from app.models import User
 from app.database import db_session
 import boto
@@ -27,6 +27,20 @@ def privacy():
     if session.get('user_id'):
         user = User.query.get(session.get('user_id'))
     return render_template('privacy.html', user=user)
+
+@app.route('/download/')
+def download():
+    if session.get('admin'): 
+        csv = write_to_csv()
+        # We need to modify the response, so the first thing we 
+        # need to do is create a response out of the CSV string
+        response = make_response(csv)
+        # This is the key: Set the right header for the response
+        # to be downloaded, instead of just printed on the browser
+        response.headers["Content-Disposition"] = "attachment; filename=momsitting_data.csv"
+        return response
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/create-user/', methods=('GET', 'POST'))
 def create_user():
@@ -147,6 +161,10 @@ def login():
         email = ajax_json['email']
         password = ajax_json['password']
         query = User.query.filter_by(email=email, password=password).first()
+        if email.lower() =="admin@momsitting.com" and password=="alykhanscott1":
+            json['admin'] = True
+            session['admin'] = True
+            return jsonify(json=json)
         if query:
             user = query
             session['user_id'] = user.id
@@ -211,4 +229,11 @@ def upload_file_to_amazon(filename, file):
     sml = b.new_key("/".join(["/",filename]))
     sml.set_contents_from_file(file)
     sml.set_acl('public-read')
+
+def write_to_csv():
+    csv_string = """NAME, EMAIL, ZIP, LANGUAGES, ADDRESS, WEEKLY RATE, CHILDCARE EXPERIENCE, BIO, PROFILE URL\n"""
+    for user in User.query.all():
+        csv_string += "%s, %s, %s, %s, %s, %s, %s, %s, %s" % (user.name, user.email, user.zip_code, user.address, \
+        (" ").join(str(user.languages).split(", ")), str(user.weekly_full_time_rate), str(user.childcare_experience), user.introduction, user.profile_url) + "\n"
+    return csv_string
 

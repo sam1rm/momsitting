@@ -59,16 +59,16 @@ label {
 #how-it-works-nav {
     color:white;
     text-align:center;
-    padding-top:6px;
     height:6%;
-    padding-top:1.00%;
     background-color: #ff7bac;
-
 }
 
 #how-it-works-text {
-    font-size:20px;
+    font-size:16px;
     font-family: 'Roboto', sans-serif;
+    padding:2px 15px 2px 15px;
+    border:1px solid white;
+    border-radius:3px;
 }
 
 #how-it-works {
@@ -500,4 +500,9 @@ textarea {
 
 h3 {
     font-weight:normal;
+}
+
+#how-it-works-signup-momsitter, #how-it-works-signup-need-childcare {
+    text-decoration: none;
+    color:white;
 }
